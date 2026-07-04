@@ -1,0 +1,9 @@
+# Zim Framework directory (cloned modules, script, and init files)
+.zim/
+
+# Zsh completion cache files
+.zcompcache/
+.zcompdump*
+
+# Zsh history
+.zsh_history
