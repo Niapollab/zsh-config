@@ -6,6 +6,7 @@ This repository contains a modular Zsh configuration managed by the fast and lig
 
 - ⚙️ **[.zshrc](.zshrc)**: Shell initialization, options, keybindings, aliases, and `zimfw` bootstrap.
 - 🧩 **[.zimrc](.zimrc)**: The Zim module configuration. List all plugins and themes here.
+- 🔒 **`.zsh_secrets`**: Local secret aliases, API tokens, and environment variables (ignored by Git).
 
 ---
 
@@ -30,6 +31,21 @@ If you prefer standard home directory locations:
    ln -s /path/to/cloned/zsh-config/.zimrc ~/.zimrc
    ```
 3. Start a new terminal session.
+---
+
+## 🔒 Local Secrets
+
+For storing sensitive information (such as API tokens, private aliases, or environment variables) that you do not want to commit to Git:
+
+1. Create the secrets file:
+   ```bash
+   touch .zsh_secrets
+   ```
+2. Restrict its permissions so only you can read it:
+   ```bash
+   chmod 600 .zsh_secrets
+   ```
+3. Add your private configurations inside `.zsh_secrets` (e.g., `export API_KEY="..."` or `alias private_db="..."`).
 
 ---
 

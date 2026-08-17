@@ -120,3 +120,12 @@ if (( ${+commands[zoxide]} )); then
   alias cd=z
   alias cdi=zi
 fi
+
+# -----------------
+# Load secret configurations
+# -----------------
+
+# Source local secret aliases or env vars if the file exists
+if [[ -f "${ZDOTDIR:-${HOME}}/.zsh_secrets" ]]; then
+  source "${ZDOTDIR:-${HOME}}/.zsh_secrets"
+fi

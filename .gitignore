@@ -7,3 +7,6 @@
 
 # Zsh history
 .zsh_history
+
+# Local secret configurations
+.zsh_secrets
