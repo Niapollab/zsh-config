@@ -58,6 +58,22 @@ To customize your prompt, plugins, or completion:
    zimfw install
    ```
 
+
+### 🧩 Custom Local Modules
+
+For custom functions, utility scripts, or configurations that you want to write yourself and compile with `zimfw`:
+
+1. Create a directory inside `modules/` (e.g., `modules/my-helper/`).
+2. Add an `init.zsh` script inside that directory containing your functions or settings.
+3. Register the local module in [`.zimrc`](.zimrc) using the absolute path relative to `$ZDOTDIR`:
+   ```zsh
+   zmodule "${ZDOTDIR:-${HOME}}/modules/my-helper"
+   ```
+4. Run the compilation command:
+   ```zsh
+   zimfw compile
+   ```
+
 ### 💻 Handy Zim Commands
 - 📥 `zimfw install`: Installs new modules and builds the initialization script.
 - 🔄 `zimfw update`: Updates installed modules.
