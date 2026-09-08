@@ -52,7 +52,7 @@ zmodule duration-info
 zmodule git-info
 
 # Clean and responsive terminal theme with git status integration
-zmodule Moarram/headline
+zmodule Niapollab/headline
 
 #
 # Completion

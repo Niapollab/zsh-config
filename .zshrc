@@ -108,6 +108,7 @@ source "${ZIM_HOME}/init.zsh"
 # Theme Configuration (Moarram/headline)
 # -----------------
 
+HL_PRINT_MODE='prompt'
 HL_SEP_MODE='on'
 HL_ERR_MODE='detail'
 
