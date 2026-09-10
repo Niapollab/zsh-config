@@ -122,6 +122,11 @@ if (( ${+commands[zoxide]} )); then
   alias cdi=zi
 fi
 
+# Use Kitty's ssh kitten when running inside Kitty
+if [[ -n "${KITTY_WINDOW_ID}" ]] && (( ${+commands[kitty]} )); then
+  alias ssh="kitty +kitten ssh"
+fi
+
 # -----------------
 # Load secret configurations
 # -----------------
