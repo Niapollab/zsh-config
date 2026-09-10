@@ -127,6 +127,9 @@ if [[ -n "${KITTY_WINDOW_ID}" ]] && (( ${+commands[kitty]} )); then
   alias ssh="kitty +kitten ssh"
 fi
 
+# SSH with standard xterm-256color and truecolor
+alias xssh='TERM=xterm-256color COLORTERM=truecolor command ssh -o SetEnv="TERM=xterm-256color" -o SetEnv="COLORTERM=truecolor"'
+
 # -----------------
 # Load secret configurations
 # -----------------
