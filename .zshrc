@@ -122,8 +122,8 @@ if (( ${+commands[zoxide]} )); then
   alias cdi=zi
 fi
 
-# Use Kitty's ssh kitten when running inside Kitty
-if [[ -n "${KITTY_WINDOW_ID}" ]] && (( ${+commands[kitty]} )); then
+# Use Kitty's ssh kitten when running locally inside Kitty (and not already in an SSH session)
+if [[ -n "${KITTY_WINDOW_ID}" && -z "${SSH_CONNECTION}" && -z "${SSH_TTY}" ]] && (( ${+commands[kitty]} )); then
   alias ssh="kitty +kitten ssh"
 fi
 
