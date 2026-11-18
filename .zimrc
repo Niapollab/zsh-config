@@ -76,7 +76,11 @@ zmodule completion
 #
 
 # Fish-like syntax highlighting for Zsh, must be sourced after completion.
-zmodule zsh-users/zsh-syntax-highlighting
+if [[ -n "${TERMUX_VERSION}" || "${OSTYPE}" == linux-android* ]]; then
+  zmodule zdharma-continuum/fast-syntax-highlighting
+else
+  zmodule zsh-users/zsh-syntax-highlighting
+fi
 
 # Fish-like history search for Zsh, must be sourced after
 # zsh-users/zsh-syntax-highlighting.
