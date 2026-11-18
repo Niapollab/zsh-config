@@ -54,8 +54,8 @@ zmodule duration-info
 # Exposes git repository status information to prompts.
 zmodule git-info
 
-# Clean and responsive terminal theme with git status integration
-zmodule Niapollab/headline
+# Optionally include a separate theme file
+[[ -r "${ZDOTDIR:-${HOME}}/.zimrc.theme" ]] && source "${ZDOTDIR:-${HOME}}/.zimrc.theme"
 
 #
 # Completion

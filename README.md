@@ -5,7 +5,8 @@ This repository contains a modular Zsh configuration managed by the fast and lig
 ## 📂 Structure
 
 - ⚙️ **[.zshrc](.zshrc)**: Shell initialization, options, keybindings, aliases, and `zimfw` bootstrap.
-- 🧩 **[.zimrc](.zimrc)**: The Zim module configuration. List all plugins and themes here.
+- 🧩 **[.zimrc](.zimrc)**: The Zim module configuration. List all plugins here (optionally sources `.zimrc.theme`).
+- 🎨 **`.zimrc.theme`**: Optional local theme configuration sourced by `.zimrc` (ignored by Git).
 - 🔒 **`.zsh_secrets`**: Local secret aliases, API tokens, and environment variables (ignored by Git).
 
 ---
@@ -31,6 +32,7 @@ If you prefer standard home directory locations:
    ln -s /path/to/cloned/zsh-config/.zimrc ~/.zimrc
    ```
 3. Start a new terminal session.
+
 ---
 
 ## 🔒 Local Secrets
@@ -46,6 +48,27 @@ For storing sensitive information (such as API tokens, private aliases, or envir
    chmod 600 .zsh_secrets
    ```
 3. Add your private configurations inside `.zsh_secrets` (e.g., `export API_KEY="..."` or `alias private_db="..."`).
+
+---
+
+## 🎨 Theme Configuration
+
+Theme selection is separated from [.zimrc](.zimrc) via an optional `.zimrc.theme` file (ignored by Git), making it easy to maintain or swap theme variants locally:
+
+1. Create `.zimrc.theme` in `$ZDOTDIR` (or `~/` if symlinking):
+   ```zsh
+   touch .zimrc.theme
+   ```
+2. Add your theme `zmodule` declaration inside `.zimrc.theme`, for example:
+   ```zsh
+   zmodule Niapollab/headline
+   ```
+3. Install the theme and rebuild Zim's initialization script:
+   ```zsh
+   zimfw install
+   ```
+
+> **Note:** Because `.zshrc` only auto-rebuilds `init.zsh` when `.zimrc` itself is modified, remember to run `zimfw install` (or `zimfw build`) whenever you edit `.zimrc.theme`.
 
 ---
 

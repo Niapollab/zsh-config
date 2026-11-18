@@ -10,3 +10,6 @@
 
 # Local secret configurations
 .zsh_secrets
+
+# Zsh theme
+.zimrc.theme
