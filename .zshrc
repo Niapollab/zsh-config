@@ -93,8 +93,23 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 # Initialize modules
 # ------------------
 
-ZIM_BIN='/usr/share/zimfw/zimfw.zsh'
 ZIM_HOME="${ZDOTDIR:-${HOME}}/.zim"
+
+if [[ -r "${ZIM_HOME}/zimfw.zsh" ]]; then
+  ZIM_BIN="${ZIM_HOME}/zimfw.zsh"
+elif [[ -r "/usr/share/zimfw/zimfw.zsh" ]]; then
+  ZIM_BIN="/usr/share/zimfw/zimfw.zsh"
+else
+  # Download zimfw plugin manager if missing.
+  ZIM_BIN="${ZIM_HOME}/zimfw.zsh"
+  if (( ${+commands[curl]} )); then
+    curl -fsSL --create-dirs -o "${ZIM_BIN}" \
+      https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  else
+    mkdir -p "${ZIM_HOME}" && wget -nv -O "${ZIM_BIN}" \
+      https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  fi
+fi
 
 # Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
 if [[ ! "${ZIM_HOME}/init.zsh" -nt "${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc}" ]]; then
